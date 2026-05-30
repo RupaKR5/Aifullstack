@@ -1,7 +1,7 @@
 import logging
 import os
 from dotenv import load_dotenv
-from sqlalchemy import create_engine, inspect, text, String
+from sqlalchemy import create_engine, inspect, Integer, String, text
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
@@ -49,9 +49,9 @@ def _postgres_compatible(engine) -> bool:
                 return False
 
         user_id_type = columns["id"]["type"]
-        if not isinstance(user_id_type, String):
+        if not isinstance(user_id_type, (String, Integer)):
             logger.warning(
-                "PostgreSQL users.id column type is not compatible with the app's string-based user IDs."
+                "PostgreSQL users.id column type is not compatible with app user IDs."
             )
             return False
 
