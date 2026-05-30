@@ -14,21 +14,17 @@ from app.routers.items import router as items_router
 
 app = FastAPI(title="InvenTrack API")
 
-# Configure CORS origins explicitly to ensure a concrete Access-Control-Allow-Origin
-ENVIRONMENT = os.getenv("ENVIRONMENT", "development")
-FRONTEND_ORIGIN = os.getenv("FRONTEND_ORIGIN")
-if not FRONTEND_ORIGIN:
-    if ENVIRONMENT == "production":
-        raise RuntimeError("FRONTEND_ORIGIN environment variable must be set in production")
-    FRONTEND_ORIGIN = "http://localhost:5173"
+# Configure CORS to allow all origins in production
+# This enables cross-origin requests from any frontend host.
+# For stricter security later, replace '*' with specific origins.
 
-allowed_origins = [o.strip() for o in FRONTEND_ORIGIN.split(",") if o.strip()]
+allowed_origins = ["*"]
 
 # IMPORTANT: middleware registered before routes
 app.add_middleware(
     CORSMiddleware,
     allow_origins=allowed_origins,
-    allow_credentials=True,
+    allow_credentials=False,
     allow_methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allow_headers=["Content-Type", "Authorization"],
 )
