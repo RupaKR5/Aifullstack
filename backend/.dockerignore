@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Env files
+.env
+.env.*
+
+# Database
+*.sqlite3
+sql_app.db
+
+# Git
+.git
+.gitignore
+
+# Node
+node_modules/
+
+# Build
+build/
+dist/
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db

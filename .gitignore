@@ -1,0 +1,36 @@
+# Root gitignore for fullstack monorepo
+
+# Python backend
+backend/__pycache__/
+backend/*.py[cod]
+backend/*$py.class
+backend/.venv/
+backend/venv/
+backend/ENV/
+backend/env/
+backend/.env
+backend/.env.*
+backend/sql_app.db
+backend/*.sqlite3
+backend/*.log
+backend/.vscode/
+
+# Node frontend
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/.env
+frontend/.env.*
+frontend/*.log
+frontend/.vscode/
+
+# General
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
