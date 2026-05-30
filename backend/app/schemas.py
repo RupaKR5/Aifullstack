@@ -24,7 +24,7 @@ class UserLogin(BaseModel):
 class UserPublic(BaseModel):
     model_config = ConfigDict(from_attributes=True)
 
-    id: str
+    id: int
     email: str
     name: Optional[str] = None
 

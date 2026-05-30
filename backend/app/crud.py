@@ -17,7 +17,6 @@ def get_user_by_email(db: Session, email: str) -> Optional[models.User]:
 def create_user(db: Session, data: schemas.UserRegister) -> models.User:
     name = data.name if data.name else data.email.split("@")[0]
     user = models.User(
-        id=str(uuid.uuid4()),
         email=data.email,
         hashed_password=hash_password(data.password),
         name=name,

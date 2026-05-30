@@ -10,7 +10,7 @@ from app.database import Base
 class User(Base):
     __tablename__ = "users"
 
-    id = Column(String, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     email = Column(String, unique=True, index=True, nullable=False)
     hashed_password = Column(String, nullable=False)
     name = Column(String, nullable=True)
@@ -33,7 +33,7 @@ class Inventory(Base):
     id = Column(String, primary_key=True, index=True)
     name = Column(String, nullable=False)
     description = Column(String, nullable=True)
-    owner_id = Column(String, ForeignKey("users.id"), nullable=False)
+    owner_id = Column(Integer, ForeignKey("users.id"), nullable=False)
     created_at = Column(
         DateTime(timezone=True),
         default=datetime.utcnow,
